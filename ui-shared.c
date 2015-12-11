@@ -606,6 +606,12 @@ void cgit_submodule_link(const char *class, char *path, const char *rev)
 		path[len - 1] = tail;
 }
 
+void cgit_github_link(const char *path)
+{
+    if (ctx.cfg.github_user)
+        htmlf("<a href='https://github.com/%s/%s'>github</a>", ctx.cfg.github_user, path);
+}
+
 const struct date_mode *cgit_date_mode(enum date_mode_type type)
 {
 	static struct date_mode mode;
@@ -998,6 +1004,8 @@ void cgit_print_pageheader(void)
 			html_attr(ctx.repo->homepage);
 			html("'>homepage</a>");
 		}
+		if (ctx.cfg.enable_github_tab)
+			cgit_github_link(ctx.repo->name);
 		html("</td><td class='form'>");
 		html("<form class='right' method='get' action='");
 		if (ctx.cfg.virtual_root) {
@@ -1025,6 +1033,8 @@ void cgit_print_pageheader(void)
 		if (ctx.cfg.root_readme)
 			site_link("about", "about", NULL, hc("about"),
 				  NULL, NULL, 0, 1);
+		if (ctx.cfg.enable_github_tab)
+			cgit_github_link("");
 		html("</td><td class='form'>");
 		html("<form method='get' action='");
 		html_attr(currenturl);

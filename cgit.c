@@ -144,6 +144,8 @@ static void config_cb(const char *name, const char *value)
 		ctx.cfg.module_link = xstrdup(value);
 	else if (!strcmp(name, "strict-export"))
 		ctx.cfg.strict_export = xstrdup(value);
+	else if (!strcmp(name, "github-user"))
+		ctx.cfg.github_user = xstrdup(value);
 	else if (!strcmp(name, "virtual-root")) {
 		ctx.cfg.virtual_root = ensure_end(value, '/');
 	} else if (!strcmp(name, "nocache"))
@@ -180,6 +182,8 @@ static void config_cb(const char *name, const char *value)
 		ctx.cfg.enable_tree_linenumbers = atoi(value);
 	else if (!strcmp(name, "enable-git-config"))
 		ctx.cfg.enable_git_config = atoi(value);
+	else if (!strcmp(name, "enable-github-tab"))
+		ctx.cfg.enable_github_tab = atoi(value);
 	else if (!strcmp(name, "max-stats"))
 		ctx.cfg.max_stats = cgit_find_stats_period(value, NULL);
 	else if (!strcmp(name, "cache-size"))
@@ -370,6 +374,8 @@ static void prepare_context(void)
 	ctx.cfg.enable_index_owner = 1;
 	ctx.cfg.enable_tree_linenumbers = 1;
 	ctx.cfg.enable_git_config = 0;
+	ctx.cfg.enable_github_tab = 0;
+	ctx.cfg.github_user = NULL;
 	ctx.cfg.max_repo_count = 50;
 	ctx.cfg.max_commit_count = 50;
 	ctx.cfg.max_lock_attempts = 5;

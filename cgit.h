@@ -212,6 +212,7 @@ struct cgit_config {
 	char *repository_sort;
 	char *virtual_root;	/* Always ends with '/'. */
 	char *strict_export;
+	char *github_user;
 	int cache_size;
 	int cache_dynamic_ttl;
 	int cache_max_create_time;
@@ -236,6 +237,7 @@ struct cgit_config {
 	int enable_html_serving;
 	int enable_tree_linenumbers;
 	int enable_git_config;
+	int enable_github_tab;
 	int local_time;
 	int max_atom_items;
 	int max_repo_count;
