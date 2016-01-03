@@ -71,3 +71,22 @@ which might help if my directions are confusing.
         # dpkg -i ../cgit_*.deb
 
     you're done! nice work
+
+how do i configure this?
+------------------------
+
+in `/etc/cgitrc` like anything else:
+
+    # enable github tab
+    enable_github_tab=1
+    github_user=ausbin
+
+    ...
+
+    # example of repo.hide
+    repo.url=foo
+    repo.desc=show off repo.hide
+    repo.path=/home/jane/foo.git
+    repo.hide=1
+
+see `cgitrc(5)` for more information.
